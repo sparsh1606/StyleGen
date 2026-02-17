@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Check, Diameter, ThumbsUp, Zap } from "lucide-react";
+import { useState } from "react";
 
 const Home = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
