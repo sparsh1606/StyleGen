@@ -3,6 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { Download } from "lucide-react";
+import { HashLoader } from "react-spinners";
 
 const MyGenerations = () => {
   const server = import.meta.env.VITE_SERVER_URL;
