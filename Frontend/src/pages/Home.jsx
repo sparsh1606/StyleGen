@@ -7,12 +7,13 @@ const Home = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
     const checkauth = async () => {
-      setIsLoadingMain(true);
       try {
         const respone = await axios.get(`${server}/verify`, {
           withCredentials: true,
         });
-        setIsLoggedIn(true);
+        if (respone.status === 200) {
+          setIsLoggedIn(true);
+        }
       } catch (err) {
         toast.error(err.response?.data?.message || err || "An error occurred");
         navigate("/login");
