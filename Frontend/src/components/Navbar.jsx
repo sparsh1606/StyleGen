@@ -10,6 +10,7 @@ export const Navbar = () => {
   const server = import.meta.env.VITE_SERVER_URL;
   const isLoggedIn = Cookies.get("isLoggedIn") === "true";
   const navigate = useNavigate();
+  console.log(isLoggedIn);
   const handleLogout = async () => {
     try {
       const response = await axios.post(
