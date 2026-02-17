@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { HashLoader } from "react-spinners";
 
 const Signup = () => {
   useEffect(() => {
@@ -13,6 +14,7 @@ const Signup = () => {
     });
   }, []);
 
+  const [isLoading, setIsLoading] = useState(false);
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,6 +25,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       const response = await axios.post(
         `${server}/signup`,
         {
@@ -37,9 +40,11 @@ const Signup = () => {
       if (response.status === 201) {
         navigate("/");
       }
+      setIsLoading(false);
       toast.success(response.data.message);
       console.log(` Response: ${response.data.message}`);
     } catch (err) {
+      setIsLoading(false);
       toast.error(err.response?.data?.message || err || "An error occurred");
       console.log(`Error: ${err}`);
     }
@@ -108,6 +113,7 @@ const Signup = () => {
               id="password"
               className="border-3 border-white/50 p-2 rounded-lg focus:border-pink-700 outline-0 transition duration-400 mb-6 "
             />
+          
           </div>
           <Link
             to={"/login"}
@@ -119,7 +125,11 @@ const Signup = () => {
             type="sumbit"
             className="mt-2 w-full bg-pink-700 p-3 rounded-full cursor-pointer hover:bg-pink-700/60 transition-colors duration-300"
           >
-            Sign up
+            {isLoading === true ? (
+              <HashLoader color="white" size={28} />
+            ) : (
+              "Signup"
+            )}
           </button>
         </form>
       </div>

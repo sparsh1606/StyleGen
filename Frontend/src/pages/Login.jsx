@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { HashLoader } from "react-spinners";
 
 const Login = () => {
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -21,6 +23,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true);
       const response = await axios.post(
         `${server}/login`,
         {
@@ -31,13 +34,14 @@ const Login = () => {
           withCredentials: true,
         },
       );
-      console.log(response.status);
       if (response.status === 201) {
         navigate("/");
       }
+      setIsLoading(false);
       toast.success(response.data.message);
       console.log(` Response: ${response.data.message}`);
     } catch (err) {
+      setIsLoading(false);
       toast.error(err.response?.data?.message || err || "An error occurred");
       console.log(`Error: ${err}`);
     }
@@ -99,7 +103,11 @@ const Login = () => {
             type="dubmit"
             className="mt-2 w-full bg-pink-700 p-3 rounded-full cursor-pointer hover:bg-pink-700/60 transition-colors duration-300"
           >
-            Log in
+            {isLoading === true ? (
+              <HashLoader color="white" size={28} />
+            ) : (
+              "Login"
+            )}
           </button>
         </form>
       </div>
