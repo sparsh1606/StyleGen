@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import { useEffect } from "react";
 
 export const Navbar = () => {
   const server = import.meta.env.VITE_SERVER_URL;
