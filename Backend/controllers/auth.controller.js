@@ -33,12 +33,6 @@ const signup = async (req, res) => {
         sameSite: "none", // or "none" if cross-site
         path: "/",
       })
-      .cookie("isLoggedIn", "true", {
-        maxAge: 7 * 24 * 60 * 60 * 1000, // MS
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "none",
-        path: "/",
-      })
       .status(201)
       .json({ message: "User created successfully" });
   } catch (err) {
@@ -71,12 +65,6 @@ const login = async (req, res) => {
         sameSite: "none", // or "none" if cross-site
         path: "/",
       })
-      .cookie("isLoggedIn", "true", {
-        maxAge: 7 * 24 * 60 * 60 * 1000, // MS
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "none",
-        path: "/",
-      })
       .status(201)
       .json({ message: "User loogedin successfully" });
   } catch (err) {
@@ -91,11 +79,6 @@ const logout = (req, res) => {
       secure: process.env.NODE_ENV === "production", // Only send over HTTPS in prod
       sameSite: "none", // or "none" if cross-site
       path: "/", // Ensure it's cleared for the entire domain
-    })
-    .clearCookie("isLoggedIn", {
-      secure: process.env.NODE_ENV === "production", // Only send over HTTPS in prod
-      sameSite: "none", // or "none" if cross-site
-      path: "/",
     })
     .status(200)
     .json({ message: "User logged out successfully" });

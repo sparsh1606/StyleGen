@@ -1,17 +1,32 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Cookies from "js-cookie";
 import { User, LogOut } from "lucide-react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useState } from "react";
 
 export const Navbar = () => {
   const server = import.meta.env.VITE_SERVER_URL;
-  const isLoggedIn = Cookies.get("isLoggedIn") === "true";
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
-  console.log(Cookies.get("isLoggedIn"));
-  console.log(isLoggedIn);
+  useEffect(() => {
+    const checkauth = async () => {
+      setIsLoadingMain(true);
+      try {
+        const respone = await axios.get(`${server}/verify`, {
+          withCredentials: true,
+        });
+        setIsLoggedIn(true)
+      } catch (err) {
+        toast.error(err.response?.data?.message || err || "An error occurred");
+        navigate("/login");
+        setIsLoggedIn(false);
+        console.log(err.response?.data?.message || err || "An error occurred");
+      }
+    };
+    checkauth();
+  }, []);
   const handleLogout = async () => {
     try {
       const response = await axios.post(

@@ -1,11 +1,26 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Check, Diameter, ThumbsUp, Zap } from "lucide-react";
-import Cookies from "js-cookie";
 
 const Home = () => {
-  const isLoggedIn = Cookies.get("isLoggedIn") === "true";
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    const checkauth = async () => {
+      setIsLoadingMain(true);
+      try {
+        const respone = await axios.get(`${server}/verify`, {
+          withCredentials: true,
+        });
+        setIsLoggedIn(true);
+      } catch (err) {
+        toast.error(err.response?.data?.message || err || "An error occurred");
+        navigate("/login");
+        setIsLoggedIn(false);
+        console.log(err.response?.data?.message || err || "An error occurred");
+      }
+    };
+    checkauth();
+  }, []);
   useEffect(() => {
     window.scrollTo({
       top: 0,
