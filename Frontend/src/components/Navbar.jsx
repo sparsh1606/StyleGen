@@ -38,6 +38,7 @@ export const Navbar = () => {
       );
       if (response.status === 200) {
         toast.success(response.data.message);
+        setIsLoggedIn(false);
         console.log(` Response: ${response.data.message}`);
         navigate("/");
       }
