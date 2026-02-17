@@ -30,7 +30,7 @@ const signup = async (req, res) => {
         maxAge: 7 * 24 * 60 * 60 * 1000, // MS
         httpOnly: true,
         secure: process.env.NODE_ENV === "production", // Only send over HTTPS in prod
-        sameSite: "strict", // or "none" if cross-site
+        sameSite: "none", // or "none" if cross-site
         path: "/",
       })
       .cookie("isLoggedIn", "true", {
@@ -65,7 +65,7 @@ const login = async (req, res) => {
         maxAge: 7 * 24 * 60 * 60 * 1000, // MS
         httpOnly: true,
         secure: process.env.NODE_ENV === "production", // Only send over HTTPS in prod
-        sameSite: "strict", // or "none" if cross-site
+        sameSite: "none", // or "none" if cross-site
         path: "/",
       })
       .cookie("isLoggedIn", "true", {
@@ -83,7 +83,7 @@ const logout = (req, res) => {
     .clearCookie("token", {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production", // Only send over HTTPS in prod
-      sameSite: "strict", // or "none" if cross-site
+      sameSite: "none", // or "none" if cross-site
       path: "/", // Ensure it's cleared for the entire domain
     })
     .clearCookie("isLoggedIn")
