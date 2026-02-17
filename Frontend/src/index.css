@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+@import "tailwindcss";
+
+*{
+  font-family: "Outfit", sans-serif;
+  scrollbar-width: thin;
+}
+body{
+  color: white;
+  background-color: #09090B;
+}
+
+
+.card{
+  position: relative;;
+  padding: 2rem;
+  margin-right: 3rem;
+  border-radius: 2rem;
+  width: 100%;
+  background: #000;
+  
+}
+#outCard, .outCard{
+  max-width: 22rem;
+  width: 100%;
+  padding: 3px;
+  overflow: hidden;
+  border-radius: 2rem;
+  margin-right: 1rem;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.card::after, .card::before{
+  content: '';
+  position: absolute;
+  height: 33rem;
+  width: 33rem;
+  background-image: conic-gradient(from var(--angle), rgb(232, 71, 98), transparent,transparent,transparent,transparent , rgb(232, 71, 98),transparent, transparent,transparent,  transparent);
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  z-index: -1;
+  padding: 10rem;
+  border-radius: 2rem;
+  animation: 3s spin linear infinite;
+}
+.card::before{
+  filter: blur(20px);
+}
+@keyframes spin {
+  from{
+    --angle: 0deg;
+  }to{
+    --angle: 360deg;
+  }
+}
+@media (max-width: 800px) {
+  #homeOpts{
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: center;
+    width: 90%;
+    padding: 0.75rem;
+  }
+}
+@media (max-width: 987px){
+  #homeLower{
+    flex-wrap: wrap;
+    gap: 3;
+  }
+  #homeLowerGetStarted{
+    width: 100%;
+    margin-top: 1.4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .card{
+    padding: 1.2rem;
+    margin-right: 0;
+    border-radius: 1rem;
+  }
+  .card::after, .card::before{
+    height: 20rem;
+    width: 20rem;
+    padding: 3rem;
+  }
+  .outCard{
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+}
