@@ -17,7 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://style-gen-plum.vercel.app/",
+    origin: "https://style-gen-frontend.vercel.app",
     credentials: true,
   }),
 );
