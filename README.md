@@ -1,7 +1,7 @@
 
 ---
 
-# 🔹 4. StyleGen – README
+#  StyleGen – README
 
 
 # StyleGen
@@ -27,7 +27,7 @@ StyleGen is an AI-based styling and design generator that helps users create fas
 
 ```
 git clone https://github.com/sparsh1606/StyleGen.git
-cd task-manager
+cd stylegen
 ```
 
 ---
