@@ -19,14 +19,14 @@ StyleGen is an AI-based styling and design generator that helps users create fas
 
 - Frontend: React.js  
 - Backend: Node.js  
-- AI Integration: Image/Text generation API  
+- AI Integration: Pexel API  
 
 ## Setup Instructions
 
 ### 1️. Clone the repository
 
 ```
-git clone <your-repo-link>
+git clone https://github.com/sparsh1606/StyleGen.git
 cd task-manager
 ```
 
@@ -35,9 +35,9 @@ cd task-manager
 ### 2️. Backend Setup
 
 ```
-cd backend
+cd Backend
 npm install
-node server.js
+node app.js
 ```
 
 
@@ -46,7 +46,7 @@ node server.js
 ### 3️. Frontend Setup
 
 ```
-cd frontend
+cd Frontend
 npm install
 npm run dev
 ```
