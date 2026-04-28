@@ -3,7 +3,7 @@
 
 # 🔹 4. StyleGen – README
 
-```markdown
+
 # StyleGen
 
 StyleGen is an AI-based styling and design generator that helps users create fashion or visual style ideas based on inputs.
@@ -21,9 +21,35 @@ StyleGen is an AI-based styling and design generator that helps users create fas
 - Backend: Node.js  
 - AI Integration: Image/Text generation API  
 
-## Installation
+## Setup Instructions
 
-```bash
-git clone https://github.com/sparsh1606/stylegen.git
-cd stylegen
+### 1️. Clone the repository
+
+```
+git clone <your-repo-link>
+cd task-manager
+```
+
+---
+
+### 2️. Backend Setup
+
+```
+cd backend
 npm install
+node server.js
+```
+
+
+---
+
+### 3️. Frontend Setup
+
+```
+cd frontend
+npm install
+npm run dev
+```
+
+
+---
